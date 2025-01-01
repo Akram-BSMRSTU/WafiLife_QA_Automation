@@ -5,12 +5,14 @@ import com.microsoft.playwright.Page;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import pages.HomePage;
+import pages.LoginPage;
 
 public class BaseTest {
 
     PlaywrightFactory pf;
     Page page;
     HomePage homePage;
+    LoginPage loginPage;
 
     @BeforeTest
     public void setup(){

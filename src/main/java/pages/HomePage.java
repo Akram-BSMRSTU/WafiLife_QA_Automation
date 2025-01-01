@@ -6,27 +6,22 @@ public class HomePage {
 
 
     Page page;
-//    1.Locator
+    //    1.Locator
 
-    private String loginlink = "//a[@title='আমার অ্যাকাউন্ট']";
+
     private String Searchbox = "//div[@class='header_search']//input[@id='freeSearchBoxWeb']";
     private String searchButton = "//div[@class='header_search']//i[@class='fa fa-search']";
     public String searchPageHeader = "//h1[contains(text(),'অনুসন্ধানের ফলাফল')]";
     public String searchresultValidate = "//*[contains(text(), 'Nabab')]";
+    private String loginlink = "//a[@title='আমার অ্যাকাউন্ট']";
 
 
-
-//    private String username = "//input[@id='username']";
-//    private String password = "//input[@id='password']";
-//    private String loginbutton = "//input[@name='login']";
-
-
-//     2. Constructor
+    //     2. Constructor
     public HomePage(Page page){
         this.page = page;
     }
 
-    //3.Page method
+    //     3.Page method
 
     public String getHomepageTitle(){
 
@@ -47,6 +42,11 @@ public class HomePage {
         System.out.println("search header: "+pageheader);
         return pageheader;
 
+    }
+
+    public LoginPage nevigateToLoginPage(){
+        page.click(loginlink);
+        return new LoginPage(page);
     }
 
 }
