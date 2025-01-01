@@ -1,25 +1,10 @@
 package tests;
-
-import Factory.PlaywrightFactory;
-import com.microsoft.playwright.Page;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import pages.HomePage;
 
-public class HomePageTest {
+public class HomePageTest extends BaseTest {
 
-    PlaywrightFactory pf;
-    Page page;
-    HomePage homePage;
 
-    @BeforeTest
-    public void setup(){
-        pf = new PlaywrightFactory();
-        page = pf.initBrowser("firefox");
-        homePage = new HomePage(page);
-    }
     @Test(priority = 1)
     public void homePageTitileTest(){
         String actutalTitle = homePage.getHomepageTitle();
@@ -35,16 +20,9 @@ public class HomePageTest {
     public void searchTest(){
         String actualpageheader = homePage.doSearch("Nabab");
         Assert.assertEquals(actualpageheader,"অনুসন্ধানের ফলাফল");
+        Assert.assertTrue(page.isVisible(homePage.searchresultValidate));
     }
 
 
-
-
-
-    @AfterTest
-    public  void teardown(){
-        page.context().browser().close();
-
-    }
 
 }

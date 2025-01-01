@@ -12,6 +12,7 @@ public class HomePage {
     private String Searchbox = "//div[@class='header_search']//input[@id='freeSearchBoxWeb']";
     private String searchButton = "//div[@class='header_search']//i[@class='fa fa-search']";
     public String searchPageHeader = "//h1[contains(text(),'অনুসন্ধানের ফলাফল')]";
+    public String searchresultValidate = "//*[contains(text(), 'Nabab')]";
 
 
 
