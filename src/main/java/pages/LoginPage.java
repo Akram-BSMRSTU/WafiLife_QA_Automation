@@ -1,8 +1,6 @@
 package pages;
 import com.microsoft.playwright.Page;
 
-import java.sql.Time;
-
 public class LoginPage {
 
     private Page page;
