@@ -7,6 +7,7 @@ public class LekhokPage extends CommonPage{
     Page page;
     private CommonPage commonPage;
     //    1.Locator
+    private  String lekhokLink = "//span[contains(text(),'লেখক')]";
     private  String lekhokPagetitle = "//h1[contains(text(),'লেখক')]";
     private  String lekhokSearchBox = "//input[@id='cat_search']";
     private  String lekhokSearchButton = "//button[@class='btn btn-default']//i[@class='fa fa-search']";
@@ -51,7 +52,22 @@ public class LekhokPage extends CommonPage{
             return true;
         }else
             System.out.println("lekhokh1 is not visible.");
-            return false ;
+        return false ;
     }
 
+    public LekhokPage nevigateToLekhokPage(){
+        page.click(lekhokLink);
+        return new LekhokPage(page);
     }
+
+    public boolean orderclick(){
+        clickorder();
+        return true;
+    }
+    public boolean clickorderORbuyMore(){
+        ordersomponnokorunORarokinun("orderSomponnokorun");
+        System.out.println("Clicked order somponno korun");
+        return true;
+    }
+
+}

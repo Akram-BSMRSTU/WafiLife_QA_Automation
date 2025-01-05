@@ -1,28 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="WafiLife PW Suite" thread-count="2" parallel="tests" verbose="4">
+<suite name="WafiLife PW Suite" parallel="false" verbose="2">
 
     <test name="WafiLife Home Page Test_chrome">
         <classes>
             <class name="tests.HomePageTest" />
-        </classes>
-    </test>
-
-    <test name="Login Page Test_chrome">
-        <classes>
             <class name="tests.LoginPageTest" />
+            <class name="tests.LekhokPageTest" />
         </classes>
+
+
     </test>
-
-<!--    <test name="Open Cart Login Page Test_safari">-->
-<!--        <parameter name="browser" value="chromium" />-->
-<!--        <classes>-->
-<!--            <class name="com.qa.opencart.tests.LoginPageTest" />-->
-<!--        </classes>-->
-<!--    </test>-->
-
-
-
 
 </suite>

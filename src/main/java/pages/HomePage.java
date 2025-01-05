@@ -3,17 +3,13 @@ package pages;
 import com.microsoft.playwright.Page;
 
 public class HomePage {
-
-
     Page page;
+
     //    1.Locator
-
-
     private String Searchbox = "//div[@class='header_search']//input[@id='freeSearchBoxWeb']";
     private String searchButton = "//div[@class='header_search']//i[@class='fa fa-search']";
     public String searchPageHeader = "//h1[contains(text(),'অনুসন্ধানের ফলাফল')]";
     public String searchresultValidate = "//*[contains(text(), 'Nabab')]";
-    private String loginlink = "//a[@title='আমার অ্যাকাউন্ট']";
 
 
     //     2. Constructor
@@ -44,10 +40,7 @@ public class HomePage {
 
     }
 
-    public LoginPage nevigateToLoginPage(){
-        page.click(loginlink);
-        return new LoginPage(page);
-    }
+
 
 }
 

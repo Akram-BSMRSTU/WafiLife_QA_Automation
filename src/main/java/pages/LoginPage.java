@@ -3,16 +3,15 @@ import com.microsoft.playwright.Page;
 
 public class LoginPage {
 
-    private Page page;
+    Page page;
 
-    
     //    1.Locator
+    private String loginlink = "//a[@title='আমার অ্যাকাউন্ট']";
     private String username = "//input[@id='username']";
     private String password = "//input[@id='password']";
     private String loginbutton = "//input[@name='login']";
     private String forgetpasswordLink = "//a[contains(text(),'আপনি কি পাসওয়ার্ড ভুলে গেছেন?')]";
     private String logoutLink = "//li[@class='woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--customer-logout']";
-
 
     //     2. Constructor
     public LoginPage(Page page){
@@ -27,6 +26,10 @@ public class LoginPage {
 
     public boolean isforgetpasslinkisEsist(){
         return page.isVisible(forgetpasswordLink);
+    }
+
+    public void nevigateToLoginPage(){
+        page.click(loginlink);
     }
 
     public boolean doLogin(String appUsername, String appPassword){

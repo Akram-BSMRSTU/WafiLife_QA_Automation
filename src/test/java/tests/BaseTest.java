@@ -2,37 +2,40 @@ package tests;
 
 import Factory.PlaywrightFactory;
 import com.microsoft.playwright.Page;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import pages.CommonPage;
-import pages.HomePage;
-import pages.LekhokPage;
-import pages.LoginPage;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeSuite;
+import pages.*;
 
 public class BaseTest {
 
-    PlaywrightFactory pf;
-    Page page;
-    HomePage homePage;
-    LoginPage loginPage;
-    LekhokPage lekhokpage;
-    CommonPage commonPage;
+    protected PlaywrightFactory pf;
+    protected Page page;
+    protected HomePage homePage;
+    protected LoginPage loginPage;
+    protected CommonPage commonPage;
+    protected LekhokPage lekhokPage;
 
-    @BeforeTest
-    public void setup(){
-        pf = new PlaywrightFactory();
+
+    @BeforeClass
+    public void setup() {
+        System.out.println("Setting up the tests...");
+        pf = PlaywrightFactory.getInstance(); // Get Singleton instance
         page = pf.initBrowser("firefox");
 
-
+        // Initialize page objects
         homePage = new HomePage(page);
         loginPage = new LoginPage(page);
-        lekhokpage = new LekhokPage(page);
         commonPage = new CommonPage(page);
+        lekhokPage = new LekhokPage(page);
+
+        System.out.println("Setup completed. Login initialized: " + (loginPage != null));
     }
 
-    @AfterTest
-    public  void teardown(){
-        page.context().browser().close();
-
+    @AfterSuite
+    public void teardown() {
+        System.out.println("Tearing down the tests...");
+        pf.closeBrowser();  // Close the browser after all tests
     }
 }
