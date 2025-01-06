@@ -16,6 +16,7 @@ public class BaseTest {
     protected LoginPage loginPage;
     protected CommonPage commonPage;
     protected LekhokPage lekhokPage;
+    protected CheckoutPage checkoutpage;
 
 
     @BeforeClass
@@ -29,6 +30,7 @@ public class BaseTest {
         loginPage = new LoginPage(page);
         commonPage = new CommonPage(page);
         lekhokPage = new LekhokPage(page);
+        checkoutpage = new CheckoutPage(page);
 
         System.out.println("Setup completed. Login initialized: " + (loginPage != null));
     }
