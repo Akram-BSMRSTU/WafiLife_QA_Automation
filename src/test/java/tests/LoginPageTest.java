@@ -1,6 +1,7 @@
 package tests;
 
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class LoginPageTest extends BaseTest{
@@ -17,10 +18,33 @@ public class LoginPageTest extends BaseTest{
         Thread.sleep(3000);
         Assert.assertTrue(loginPage.isforgetpasslinkisEsist());
     }
-    @Test(priority = 3)
-    public void loginTest() throws InterruptedException {
-        Assert.assertFalse(loginPage.doLogin("wativor163@myweblaw.com","123456789**"));
-        Thread.sleep(3000);
+
+    @Test(priority = 3, dataProvider = "loginData")
+    public void testDoLogin(String appUsername, String appPassword, boolean isValid) {
+        boolean loginResult = loginPage.doLogin(appUsername, appPassword);
+
+        // Assert based on the expected validity of the credentials
+        if (isValid) {
+            // For valid credentials, loginResult should be true
+            Assert.assertTrue(loginResult,
+                    "Login should succeed for valid credentials, but it failed.");
+        } else {
+            // For invalid credentials, loginResult should be false
+            Assert.assertFalse(loginResult,
+                    "Login should fail for invalid credentials, but it succeeded.");
+        }
+    }
+
+    @DataProvider(name = "loginData")
+    public Object[][] getLoginData() {
+        return new Object[][] {
+                {"wativor163@myweblaw.com", "invalidPass2",false},
+                {"invalidUser1", "123456789**", false},
+                {"", "123456789**",false},
+                {"wativor163@myweblaw.com", "",false},
+                {"", "",false},
+                {"wativor163@myweblaw.com", "123456789**",true}
+        };
     }
 
 

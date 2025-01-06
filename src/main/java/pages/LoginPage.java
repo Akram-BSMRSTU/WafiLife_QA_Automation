@@ -33,7 +33,7 @@ public class LoginPage {
     }
 
     public boolean doLogin(String appUsername, String appPassword){
-        System.out.println("App Username "+ appUsername + ":"+appPassword);
+//        System.out.println("App Username "+ appUsername + ":"+appPassword);
         page.fill(username,appUsername);
         page.fill(password,appPassword);
         page.click(loginbutton);
