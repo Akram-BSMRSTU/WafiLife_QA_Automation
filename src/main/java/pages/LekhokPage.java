@@ -56,6 +56,7 @@ public class LekhokPage extends CommonPage{
     }
 
     public LekhokPage nevigateToLekhokPage(){
+        page.waitForSelector(lekhokLink);
         page.click(lekhokLink);
         return new LekhokPage(page);
     }
