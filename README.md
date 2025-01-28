@@ -1,6 +1,17 @@
 # Wafilie - Ecommerce Automation
 This repository contains a web automation framework developed for the e-commerce website [WafiLife](https://www.wafilife.com/) using Playwright Java.
 
+## Automation Steps
+   -   Visit this site and Login
+   -   Click  লেখক from the menu
+   -   Scroll down and go to the Next Page
+   -   Select any Author
+   -   View any Book Details
+   -   Click অর্ডার করুন
+   -   Click অর্ডার সম্পন্ন করুন
+   -   Provide all Information of  আপনার বিলিং এবং শিপিং তথ্য
+   -   Log out
+
 ##  Key Features
    - **Page Object Model (POM):** Ensures code reusability and maintainability by organizing web elements and actions into structured classes.
    - **Page Chaining:** Optimizes the navigation flow between          application pages during testing for seamless execution.
