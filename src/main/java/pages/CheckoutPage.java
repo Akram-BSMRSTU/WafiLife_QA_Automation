@@ -88,6 +88,7 @@ public class CheckoutPage extends CommonPage {
     }
     public void logout(){
         clicklogout();
+        System.out.println("Logout successfull");
     }
 
 }

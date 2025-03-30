@@ -9,7 +9,7 @@ public class LoginPage extends CommonPage {
     private String loginlink = "//a[@title='আমার অ্যাকাউন্ট']";
     private String username = "//input[@id='username']";
     private String password = "//input[@id='password']";
-    private String loginbutton = "//input[@name='login']";
+    public String loginbutton = "//input[@name='login']";
     private String forgetpasswordLink = "//a[contains(text(),'আপনি কি পাসওয়ার্ড ভুলে গেছেন?')]";
     private String logoutLink = "//li[@class='woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--customer-logout']";
 

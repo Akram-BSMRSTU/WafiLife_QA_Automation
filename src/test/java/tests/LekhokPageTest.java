@@ -33,11 +33,4 @@ public class LekhokPageTest extends BaseTest{
         Thread.sleep(3000);
     }
 
-
-//    @Test
-//    public void LekhokTitlePageTest(){
-//        String actualTitle = lekhokpage.getLekhokTitle();
-//        System.out.println("LekhokPageActual Title :"+actualTitle);
-//        Assert.assertEquals(actualTitle,"লেখক");
-//    }
 }

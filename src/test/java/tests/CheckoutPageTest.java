@@ -32,6 +32,9 @@ public class CheckoutPageTest extends BaseTest {
     @Test(priority = 6)
     public void Dologout() throws InterruptedException{
         checkoutpage.logout();
+        Thread.sleep(3000);
+        Assert.assertTrue(page.isVisible(loginPage.loginbutton), "Login link is visible after logout");
+
     }
 
 
