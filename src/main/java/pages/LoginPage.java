@@ -1,7 +1,7 @@
 package pages;
 import com.microsoft.playwright.Page;
 
-public class LoginPage {
+public class LoginPage extends CommonPage {
 
     Page page;
 
@@ -13,8 +13,10 @@ public class LoginPage {
     private String forgetpasswordLink = "//a[contains(text(),'আপনি কি পাসওয়ার্ড ভুলে গেছেন?')]";
     private String logoutLink = "//li[@class='woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--customer-logout']";
 
+
     //     2. Constructor
     public LoginPage(Page page){
+        super(page);
         this.page = page;
     }
 
@@ -43,4 +45,5 @@ public class LoginPage {
         return false;
 
     }
+
 }

@@ -3,12 +3,10 @@ package pages;
 import com.microsoft.playwright.ElementHandle;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-import com.microsoft.playwright.options.SelectOption;
 import com.microsoft.playwright.options.WaitForSelectorState;
 
-public class CheckoutPage {
+public class CheckoutPage extends CommonPage {
 
-//    Page page;
     private final Page page;
 
     private String billing_name = "//input[@id='billing_first_name']";
@@ -16,16 +14,17 @@ public class CheckoutPage {
     private String billing_email = "//input[@id='billing_email']";
     private String billin_address = "//textarea[@id='billing_address_1']";
     private String place_order = "//button[@id='place_order']";
-//    private String billing_state = "//span[@id='select2-billing_state-container']";
+    private  String payment_methods ="//ul[@class='payment_methods methods']";
+    private String terms ="//input[@id='terms']";
 
-//    ElementHandle billing_state =  page.querySelector("//span[@id='select2-billing_state-container']");
+
 
     public CheckoutPage(Page page) {
-        if (page == null) { // Handle null page error gracefully
-            throw new IllegalArgumentException("Page cannot be null");
-        }
+//        if (page == null) { // Handle null page error gracefully
+//            throw new IllegalArgumentException("Page cannot be null");
+//        }
+        super(page);
         this.page = page;
-//     Example locator for a checkout button
     }
 
     public boolean selectByValue() throws InterruptedException {
@@ -46,23 +45,49 @@ public class CheckoutPage {
     }
 
     public boolean selectBilling_area() throws InterruptedException {
-
-
         if (page.locator("#billing_area").isEnabled()) {
             page.locator("#billing_area").selectOption("413");
         } else {
             System.out.println("Dropdown is disabled");
         }
-
-//        page.locator("#billing_area").click();
-//        page.waitForSelector("//select[@id='billing_area']//option[@value='414'][contains(text(),'খানসামা')]"); // Wait for the option to appear
-//        page.locator("#billing_area").selectOption("414");
         Thread.sleep(3000);
         return true;
     }
 
     public void fillAddress(){
-
         page.fill(billin_address,"12/1,C , Monesshor 1st lane ,Hazaribagh");
     }
+
+    public boolean clickplcaeorder(){
+        Locator paymentMethods = page.locator(payment_methods);
+        paymentMethods.scrollIntoViewIfNeeded();
+        if (page.isVisible(payment_methods)){
+            boolean isCashOnDeliveryChecked = page.isChecked("//input[@id='payment_method_cod']");
+            // Ensure that exactly one radio button is checked
+            boolean isBkashChecked = page.isChecked("//input[@id='payment_method_bkash']");
+            boolean isRocketChecked = page.isChecked("//input[@id='payment_method_rocket']");
+            boolean isNagadChecked = page.isChecked("//input[@id='payment_method_nagad']");
+            boolean isBankCardChecked = page.isChecked("//input[@id='payment_method_sslcommerz']");
+
+
+            if (isCashOnDeliveryChecked && !isBkashChecked && !isRocketChecked && !isNagadChecked  && !isBankCardChecked ) {
+                System.out.println("Default radio button is correctly set to 'Cash on Delivery'.");
+            } else {
+                System.out.println("Default radio button is not set correctly.");
+            }
+            if (page.isChecked(terms)){
+//                page.click(place_order);
+                System.out.println("can perform place order successfully");
+            }
+            return true;
+        }
+        else
+            System.out.println("Payment Method is not working properly");
+        return false;
+
+    }
+    public void logout(){
+        clicklogout();
+    }
+
 }
